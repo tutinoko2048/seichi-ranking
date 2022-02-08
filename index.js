@@ -16,12 +16,13 @@ app.use(express.static('public'));
 
 app.get("/", (req, res, next) => {
   res.sendFile(__dirname + '/public/index.html');
-  
+  console.log(1);
   pool.connect((err, client) => {
     if (err) {
-      console.log(err);
+      console.error(err);
     } else {
       client.query('SELECT * FROM serverdata', (err, result) => {
+        console.error(err);
         console.log(result);
       });
     }
