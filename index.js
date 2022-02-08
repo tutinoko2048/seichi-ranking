@@ -23,7 +23,10 @@ router.get("/", (req, res, next) => {
     console.log(result);
   });
 });
-
+pool.query('SELECT * FROM serverdata', (err, result) => {
+    console.error(err);
+    console.log(result);
+  });
 function getTime() {
   return moment().format('HH:mm:ss');
 }
