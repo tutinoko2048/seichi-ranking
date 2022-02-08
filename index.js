@@ -13,8 +13,9 @@ const pool = new Pool({
 });
 
 app.use(express.static('public'));
+const router = express.Router();
 
-app.get("/", (req, res, next) => {
+router.get("/", (req, res, next) => {
   res.sendFile(__dirname + '/public/index.html');
   console.log(1);
   pool.connect((err, client) => {
