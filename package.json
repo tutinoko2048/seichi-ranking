@@ -1,0 +1,17 @@
+{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "engines": {
+     "node": "14.x"
+   },
+   "main": "index.js",
+   "scripts": {
+     "start": "node index.js"
+   },
+  "dependencies": {
+    "ws": "^7.5.0",
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "pg": "^8.7.3"
+  }
+}
