@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const Websocket = require('ws');
 const PORT = process.env.PORT || 8000;
 const server = app.listen(PORT, () => {
   console.log("listening:" + server.address().port);
@@ -15,21 +16,19 @@ const pool = new Pool({
     }
 });
 
-app.use(express.static('public'));
-const router = express.Router();
-
-router.get("/", (req, res, next) => {
-  res.sendFile(__dirname + '/public/index.html');
+app.get("/", (req, res, next) => {
   console.log('get');
   pool.query('SELECT * FROM serverdata', (err, result) => {
-    console.error(err);
-    console.log(result);
+    if (err) {
+      console.error(err);
+      res.json({error: err.message})
+    } else {
+      console.log(result);
+      res.json(result.rows)
+    }
   });
 });
-pool.query('SELECT * FROM serverdata', (err, result) => {
-    if (err) console.error(err);
-    console.log(result.rows);
-  });
+
 function getTime() {
   return moment().format('HH:mm:ss');
 }
