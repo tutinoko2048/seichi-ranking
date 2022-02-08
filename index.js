@@ -11,14 +11,13 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
-const db = require('../db/index');
 
 app.use(express.static('public'));
 
 app.get("/", (req, res, next) => {
   res.sendFile(__dirname + '/public/index.html');
   
-  db.pool.connect((err, client) => {
+  pool.connect((err, client) => {
     if (err) {
       console.log(err);
     } else {
