@@ -21,7 +21,7 @@ app.get("/", (req, res, next) => {
     if (err) {
       console.log(err);
     } else {
-      client.query('SELECT player, mine, level FROM serverdata', (err, result) => {
+      client.query('SELECT * FROM serverdata', (err, result) => {
         console.log(result);
       });
     }
