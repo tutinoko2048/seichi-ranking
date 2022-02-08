@@ -27,8 +27,8 @@ router.get("/", (req, res, next) => {
   });
 });
 pool.query('SELECT * FROM serverdata', (err, result) => {
-    console.error(err);
-    console.log(result);
+    if (err) console.error(err);
+    console.log(result.rows);
   });
 function getTime() {
   return moment().format('HH:mm:ss');
