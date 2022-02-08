@@ -9,7 +9,10 @@ moment.tz.setDefault('Asia/Tokyo');
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: true
+  ssl: { 
+        sslmode: 'require',
+        rejectUnauthorized: false
+    }
 });
 
 app.use(express.static('public'));
