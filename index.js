@@ -24,7 +24,7 @@ app.get("/", (req, res, next) => {
       res.json({error: err.message})
     } else {
       console.log(result);
-      res.send(`Data:<br>${JSON.stringify(result.rows).replace('\n', '<br>').replace(' ', '&nbsp;')}`);
+      res.send(`<span style="font-family:"Helvetica";">Data:<br>${JSON.stringify(result.rows, null, 2).replace('\n', '<br>').replace(' ', '&nbsp;')}</span>`);
     }
   });
 });
